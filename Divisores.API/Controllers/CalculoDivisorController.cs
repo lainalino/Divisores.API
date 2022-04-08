@@ -1,5 +1,4 @@
-﻿using Divisores.Infra.Enum;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Divisores.Infra.Services.Interface;
 
 namespace Divisores.API.Controllers
@@ -22,16 +21,9 @@ namespace Divisores.API.Controllers
         {
             try
             {
-                //OPÇÃO 1
-               
-                var retorno = _calculoDivisorService.CalcularDivisores(numero);
-                var msgRetorno = _calculoDivisorService.MsgRetorno(retorno, numero);
-
-                //OPÇÃO 2
-
                 var lDivisores = _calculoDivisorService.RetornarDivisores(numero);
                 var lPrimos = _calculoDivisorService.RetornarPrimos(lDivisores);
-                var msgCompleta = _calculoDivisorService.MontarMensagemRetorno(numero, lDivisores, lPrimos);
+                var msgRetorno = _calculoDivisorService.MontarMensagemRetorno(numero, lDivisores, lPrimos);
 
                 return Ok(msgRetorno);
             }
